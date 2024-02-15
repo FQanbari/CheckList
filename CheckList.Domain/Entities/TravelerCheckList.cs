@@ -1,4 +1,5 @@
-﻿using CheckList.Domain.ValueObjects;
+﻿using CheckList.Domain.Exceptions;
+using CheckList.Domain.ValueObjects;
 using CheckList.Shared.Abstractions.Domain;
 
 namespace CheckList.Domain.Entities;
@@ -25,4 +26,39 @@ public class TravelerCheckList : AggregateRoot<TravelerCheckListId>
     }
     public TravelerCheckList() {}
 
+    public void AddItem(TravelerItem item)
+    {
+        var alreadyExists = _items.Any(i => i.Name == item.Name);
+        if (alreadyExists) throw new TravelerItemAlreadyExitstException(_name, item.Name);
+
+        _items.AddLast(item);
+    }
+
+    public void AddItems(LinkedList<TravelerItem> items)
+    {
+        foreach(var item in items) AddItem(item);
+    }
+
+    public void TakeItem(string itemName)
+    {
+        var item = GetItem(itemName);
+        var TravelerItem = item with { IsTaken = true };
+
+        _items.Find(item).Value = TravelerItem;
+    }
+
+    private TravelerItem GetItem(string itemName)
+    {
+        var item = _items.SingleOrDefault(i => i.Name == itemName);
+
+        if (item is null) throw new TravelerItemNotFoundExcepion(itemName);
+
+        return item;
+    }
+
+    public void RemoveItem(string itemName)
+    {
+        var item = GetItem(itemName);
+        _items.Remove(item);
+    }
 }
