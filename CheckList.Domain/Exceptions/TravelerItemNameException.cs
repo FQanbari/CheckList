@@ -9,9 +9,3 @@ public class TravelerItemNameException : TravelerCheckListException
         
     }
 }
-public class TravelerItemNotFoundExcepion : TravelerCheckListException
-{
-    public string ItemName { get; }
-    public TravelerItemNotFoundExcepion(string itemName) : base($"Travel item '{itemName}' was not found.")
-        => ItemName = itemName;
-}
