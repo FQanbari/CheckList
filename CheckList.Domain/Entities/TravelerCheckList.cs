@@ -1,12 +1,13 @@
 ﻿using CheckList.Domain.ValueObjects;
+using CheckList.Shared.Abstractions.Domain;
 
 namespace CheckList.Domain.Entities;
 
-public class TravelerCheckList
+public class TravelerCheckList : AggregateRoot<TravelerCheckListId>
 {
     public TravelerCheckListId Id { get; private set; }
-    public TravelerCheckListName _name;
-    public Destination _destination;
+    private TravelerCheckListName _name;
+    private Destination _destination;
 
     private readonly LinkedList<TravelerItem> _items = new();
 
