@@ -1,8 +1,9 @@
 ﻿using CheckList.Application.DTO;
+using CheckList.Application.Queries;
 using CheckList.Domain.Repositories;
 using CheckList.Shared.Abstractions.Queries;
 
-namespace CheckList.Application.Queries.Handler;
+namespace CheckList.Infrastructure.Ef.Queries.Handler;
 
 public class GetTravelerCheckListHandler : IQueryHandler<GetTravelerCheckList, TravelCheckListDto>
 {
@@ -16,6 +17,6 @@ public class GetTravelerCheckListHandler : IQueryHandler<GetTravelerCheckList, T
     {
         var travelerCheckList = await _repository.GetAsync(query.Id);
         //TODO: 
-        return null; 
+        return null;
     }
 }

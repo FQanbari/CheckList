@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CheckList.Application\CheckList.Application.csproj" />
+    <ProjectReference Include="..\CheckList.Shared.Abstractions\CheckList.Shared.Abstractions.csproj" />
+  </ItemGroup>
+
 </Project>
