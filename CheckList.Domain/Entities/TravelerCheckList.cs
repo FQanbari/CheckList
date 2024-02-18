@@ -34,7 +34,7 @@ public class TravelerCheckList : AggregateRoot<TravelerCheckListId>
         _items.AddLast(item);
     }
 
-    public void AddItems(LinkedList<TravelerItem> items)
+    public void AddItems(IEnumerable<TravelerItem> items)
     {
         foreach(var item in items) AddItem(item);
     }
