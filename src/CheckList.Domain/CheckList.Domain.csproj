@@ -14,7 +14,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CheckList.Shared.Abstractions\CheckList.Shared.Abstractions.csproj" />
+    <ProjectReference Include="..\..\shared\CheckList.Shared.Abstractions\CheckList.Shared.Abstractions.csproj" />
   </ItemGroup>
+
+
 
 </Project>

@@ -12,8 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\shared\CheckList.Shared\CheckList.Shared.csproj" />
     <ProjectReference Include="..\CheckList.Domain\CheckList.Domain.csproj" />
-    <ProjectReference Include="..\CheckList.Shared\CheckList.Shared.csproj" />
   </ItemGroup>
 
 </Project>

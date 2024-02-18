@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -16,10 +16,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\shared\CheckList.Shared.Abstractions\CheckList.Shared.Abstractions.csproj" />
+    <ProjectReference Include="..\..\shared\CheckList.Shared\CheckList.Shared.csproj" />
     <ProjectReference Include="..\CheckList.Application\CheckList.Application.csproj" />
     <ProjectReference Include="..\CheckList.Infrastructure\CheckList.Infrastructure.csproj" />
-    <ProjectReference Include="..\CheckList.Shared.Abstractions\CheckList.Shared.Abstractions.csproj" />
-    <ProjectReference Include="..\CheckList.Shared\CheckList.Shared.csproj" />
   </ItemGroup>
+
+
 
 </Project>
