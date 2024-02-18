@@ -1,22 +1,26 @@
 ﻿using CheckList.Application.DTO;
 using CheckList.Application.Queries;
 using CheckList.Domain.Repositories;
+using CheckList.Infrastructure.Ef.Contexts;
+using CheckList.Infrastructure.Ef.Models;
 using CheckList.Shared.Abstractions.Queries;
+using Microsoft.EntityFrameworkCore;
 
 namespace CheckList.Infrastructure.Ef.Queries.Handler;
 
 public class GetTravelerCheckListHandler : IQueryHandler<GetTravelerCheckList, TravelCheckListDto>
 {
-    private readonly ITravelerCheckListRepository _repository;
+    private readonly DbSet<TravelerCheckListReadModel> _travelCheckList;
 
-    public GetTravelerCheckListHandler(ITravelerCheckListRepository repository)
+    public GetTravelerCheckListHandler(ReadDbContext context)
     {
-        _repository = repository;
+        _travelCheckList = context.TravelerCheckList;
     }
     public async Task<TravelCheckListDto> HandleAsync(GetTravelerCheckList query)
-    {
-        var travelerCheckList = await _repository.GetAsync(query.Id);
-        //TODO: 
-        return null;
-    }
+        => await _travelCheckList
+            .Include(pl => pl.Name)
+            .Where(pl => pl.Id == query.Id)
+            .Select(pl => pl.AsDto())
+            .AsNoTracking()
+            .SingleOrDefaultAsync();
 }
