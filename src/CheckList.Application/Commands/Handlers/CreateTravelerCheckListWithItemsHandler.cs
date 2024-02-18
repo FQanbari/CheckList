@@ -27,7 +27,7 @@ public class CreateTravelerCheckListWithItemsHandler : ICommandHandler<CreateTra
     {
         var (id, name, days, gender, DestinationWriteModel) = command;
 
-        if (await _readService.ExistByName(name)) throw new TravelerCheckListAlreadyExistsException(name);
+        if (await _readService.ExistsByNameAsync(name)) throw new TravelerCheckListAlreadyExistsException(name);
 
         var destination = new Destination(command.Name, DestinationWriteModel.Country);
         var weather = await _service.GetWeatherAsync(destination);

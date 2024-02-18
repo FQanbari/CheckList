@@ -30,7 +30,7 @@ public class TravelerCheckList : AggregateRoot<TravelerCheckListId>
     public void AddItem(TravelerItem item)
     {
         var alreadyExists = _items.Any(i => i.Name == item.Name);
-        if (alreadyExists) throw new TravelerItemAlreadyExitstException(_name, item.Name);
+        if (alreadyExists) throw new TravelerItemAlreadyExistsException(_name, item.Name);
 
         _items.AddLast(item);
         AddEvent(new TravelerItemAdded(this, item));

@@ -2,5 +2,5 @@
 
 public interface ITravelerCheckListReadService
 {
-    Task<bool> ExistByName(string name);
+    Task<bool> ExistsByNameAsync(string name);
 }

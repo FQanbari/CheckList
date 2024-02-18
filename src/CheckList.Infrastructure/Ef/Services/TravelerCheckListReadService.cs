@@ -10,6 +10,6 @@ internal sealed class TravelerCheckListReadService : ITravelerCheckListReadServi
     private readonly DbSet<TravelerCheckListReadModel> _travelerCheckList;
     public TravelerCheckListReadService(ReadDbContext readContext)
         => _travelerCheckList = readContext.TravelerCheckList;
-    public Task<bool> ExistByName(string name)
+    public Task<bool> ExistsByNameAsync(string name)
         => _travelerCheckList.AnyAsync(x => x.Name == name);
 }
