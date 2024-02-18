@@ -3,7 +3,7 @@ using CheckList.Shared.Abstractions.Queries;
 
 namespace CheckList.Application.Queries;
 
-public class GetTravelerCheckList : IQuery<TravelCheckListDto>
+public class GetTravelerCheckList : IQuery<TravelerCheckListDto>
 {
     public Guid Id { get; set; }
 }

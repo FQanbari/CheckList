@@ -10,7 +10,7 @@ namespace CheckList.Infrastructure.Ef.Queries;
 
 internal static class Extenstions
 {
-    public static TravelCheckListDto AsDto(this TravelerCheckListReadModel readModel)
+    public static TravelerCheckListDto AsDto(this TravelerCheckListReadModel readModel)
         => new()
         {
             Id = readModel.Id,

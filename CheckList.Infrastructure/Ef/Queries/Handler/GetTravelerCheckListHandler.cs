@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CheckList.Infrastructure.Ef.Queries.Handler;
 
-public class GetTravelerCheckListHandler : IQueryHandler<GetTravelerCheckList, TravelCheckListDto>
+public class GetTravelerCheckListHandler : IQueryHandler<GetTravelerCheckList, TravelerCheckListDto>
 {
     private readonly DbSet<TravelerCheckListReadModel> _travelCheckList;
 
@@ -16,7 +16,7 @@ public class GetTravelerCheckListHandler : IQueryHandler<GetTravelerCheckList, T
     {
         _travelCheckList = context.TravelerCheckList;
     }
-    public async Task<TravelCheckListDto> HandleAsync(GetTravelerCheckList query)
+    public async Task<TravelerCheckListDto> HandleAsync(GetTravelerCheckList query)
         => await _travelCheckList
             .Include(pl => pl.Name)
             .Where(pl => pl.Id == query.Id)
