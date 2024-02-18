@@ -4,11 +4,11 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace CheckList.Shared.Queries;
 
-internal sealed class InMemeoryQueryDispatcher : IQueryDispatcher
+internal sealed class InMemoryQueryDispatcher : IQueryDispatcher
 {
     private readonly IServiceProvider _serviceProvider;
 
-    public InMemeoryQueryDispatcher(IServiceProvider serviceProvider)
+    public InMemoryQueryDispatcher(IServiceProvider serviceProvider)
         => _serviceProvider = serviceProvider;
 
 

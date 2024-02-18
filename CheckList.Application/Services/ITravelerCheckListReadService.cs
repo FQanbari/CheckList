@@ -1,6 +1,6 @@
 ﻿namespace CheckList.Application.Services;
 
-public interface ITravelerCheckListService
+public interface ITravelerCheckListReadService
 {
     Task<bool> ExistByName(string name);
 }

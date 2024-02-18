@@ -12,10 +12,10 @@ public class CreateTravelerCheckListWithItemsHandler : ICommandHandler<CreateTra
     private readonly ITravelerCheckListRepository _repository;
     private readonly ITravelerCheckListFactory _factory;
     private readonly IWeatherService _service;
-    private readonly ITravelerCheckListService _readService;
+    private readonly ITravelerCheckListReadService _readService;
 
     public CreateTravelerCheckListWithItemsHandler(ITravelerCheckListRepository repository, ITravelerCheckListFactory factory, 
-        IWeatherService weatherService, ITravelerCheckListService readService)
+        IWeatherService weatherService, ITravelerCheckListReadService readService)
     {
         _repository = repository;
         _factory = factory;

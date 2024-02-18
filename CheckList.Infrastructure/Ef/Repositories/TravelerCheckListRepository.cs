@@ -7,12 +7,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CheckList.Infrastructure.Ef.Repositories;
 
-public class TravelCheckListRepository : ITravelerCheckListRepository
+public class TravelerCheckListRepository : ITravelerCheckListRepository
 {
     private readonly DbSet<TravelerCheckList> _travelCheckList;
     private readonly WriteDbContext _writeDbContext;
 
-    public TravelCheckListRepository(WriteDbContext writeDbContext)
+    public TravelerCheckListRepository(WriteDbContext writeDbContext)
     {
         _writeDbContext = writeDbContext;
         _travelCheckList = writeDbContext.TravelerCheckLists;
