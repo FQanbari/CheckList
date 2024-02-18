@@ -3,4 +3,4 @@
 namespace CheckList.Application.Commands;
 
 
-public record RemoveTravelerCheckList(Guid id) : ICommand;
+public record RemoveTravelerCheckList(Guid Id) : ICommand;
