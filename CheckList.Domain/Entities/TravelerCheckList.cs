@@ -1,4 +1,5 @@
-﻿using CheckList.Domain.Exceptions;
+﻿using CheckList.Domain.Events;
+using CheckList.Domain.Exceptions;
 using CheckList.Domain.ValueObjects;
 using CheckList.Shared.Abstractions.Domain;
 
@@ -32,6 +33,7 @@ public class TravelerCheckList : AggregateRoot<TravelerCheckListId>
         if (alreadyExists) throw new TravelerItemAlreadyExitstException(_name, item.Name);
 
         _items.AddLast(item);
+        AddEvent(new TravelerItemAdded(this, item));
     }
 
     public void AddItems(IEnumerable<TravelerItem> items)
@@ -45,8 +47,14 @@ public class TravelerCheckList : AggregateRoot<TravelerCheckListId>
         var TravelerItem = item with { IsTaken = true };
 
         _items.Find(item).Value = TravelerItem;
+        AddEvent(new TravelerItemTaken(this, item));
     }
-
+    public void RemoveItem(string itemName)
+    {
+        var item = GetItem(itemName);
+        _items.Remove(item);
+        AddEvent(new TravelerItemRemoved(this, item));
+    }
     private TravelerItem GetItem(string itemName)
     {
         var item = _items.SingleOrDefault(i => i.Name == itemName);
@@ -56,9 +64,5 @@ public class TravelerCheckList : AggregateRoot<TravelerCheckListId>
         return item;
     }
 
-    public void RemoveItem(string itemName)
-    {
-        var item = GetItem(itemName);
-        _items.Remove(item);
-    }
+    
 }
